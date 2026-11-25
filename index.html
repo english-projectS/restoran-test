@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Միրա — ռեստորան</title>
+<meta name="description" content="Միրա ռեստորան։ Տաք լույս, հանգիստ երեկո, լավ սեղան։" data-desc-hy="Միրա ռեստորան։ Տաք լույս, հանգիստ երեկո, լավ սեղան։" data-desc-ru="Ресторан Мира. Тёплый свет, неспешный вечер, хороший стол.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Noto+Serif+Armenian:wght@400;700;900&family=Noto+Serif:wght@400;700&family=Noto+Sans+Armenian:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#12060b; --wine:#2e0f1b; --paper:#f6e6d4; --bulb:#ffc46b; --glow:#ff9d3c; --blush:#e7b59a;
+  --serif:"Noto Serif Armenian","Noto Serif",Sylfaen,Georgia,serif;
+  --sans:"Noto Sans Armenian","Noto Sans",Sylfaen,system-ui,sans-serif;
+  --display:"Comic Neue","Noto Sans Armenian","Noto Sans",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--night);color:var(--paper);font-family:var(--sans);font-size:1.1rem;line-height:1.75;overflow-x:clip;position:relative;isolation:isolate}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bulb);outline-offset:3px}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(38% 38% at 18% 28%,rgba(170,55,70,.42),transparent),
+             radial-gradient(34% 34% at 82% 72%,rgba(255,157,60,.2),transparent),
+             radial-gradient(30% 30% at 60% 10%,rgba(120,30,60,.35),transparent);
+  animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,-3%) scale(1.12)}}
+body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.cursor{position:fixed;inset:0;z-index:40;pointer-events:none;
+  background:radial-gradient(480px circle at var(--x,70%) var(--y,25%),rgba(255,176,80,.15),transparent 65%)}
+.embers{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.embers span{position:absolute;bottom:-12px;border-radius:50%;background:var(--bulb);box-shadow:0 0 8px 2px rgba(255,170,70,.7);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}12%{opacity:.85}100%{transform:translate(var(--dx),-110vh);opacity:0}}
+
+/* ---------- INTRO ---------- */
+.intro{position:fixed;inset:0;z-index:60;display:grid;place-items:center;min-height:100vh;min-height:100svh;min-height:100dvh;cursor:pointer;
+  overflow:hidden;background:radial-gradient(ellipse at 50% 48%,rgba(105,32,43,.7),rgba(36,10,20,.96) 54%,var(--night) 100%);
+  opacity:1;visibility:visible;transition:opacity .9s ease,visibility 0s linear .9s,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.intro::before,.intro::after{content:"";position:absolute;pointer-events:none}
+.intro::before{width:min(72vw,640px);aspect-ratio:1;border:1px solid rgba(255,196,107,.2);border-radius:50%;box-shadow:0 0 0 26px rgba(255,196,107,.035),0 0 0 58px rgba(255,196,107,.025),inset 0 0 90px rgba(255,157,60,.11);animation:halo 8s ease-in-out infinite alternate}
+.intro::after{inset:0;background:radial-gradient(ellipse at center,transparent 25%,rgba(10,3,7,.36) 100%)}
+@keyframes halo{to{transform:scale(1.08);opacity:.65}}
+.intro-lang{position:absolute;z-index:2;top:max(1.2rem,env(safe-area-inset-top));right:max(1rem,env(safe-area-inset-right))}
+.intro-inner{position:relative;z-index:1;display:grid;justify-items:center;gap:1rem;padding:2rem;text-align:center;animation:intro-pop 1s cubic-bezier(.2,.75,.25,1) both}
+@keyframes intro-pop{from{opacity:0;transform:translateY(22px) scale(.94);filter:blur(12px)}to{opacity:1;transform:none;filter:blur(0)}}
+.intro-kicker{font-size:.86rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blush)}
+.intro h1{font-family:var(--display);font-weight:700;font-size:clamp(5rem,18vw,13rem);line-height:.98;white-space:nowrap;color:var(--bulb);
+  -webkit-text-stroke:1px rgba(255,230,177,.75);paint-order:stroke fill;letter-spacing:-.045em;
+  text-shadow:0 3px 0 #9d521b,0 0 36px rgba(255,150,50,.58),0 0 110px rgba(255,120,40,.35)}
+.intro-rule{width:74px;height:2px;background:linear-gradient(90deg,transparent,var(--bulb),transparent);box-shadow:0 0 18px rgba(255,196,107,.6)}
+.intro p{max-width:34ch;color:var(--paper);font-family:var(--serif);font-size:clamp(1rem,3vw,1.3rem)}
+.intro-skip-hint{position:absolute;z-index:1;left:1rem;right:1rem;bottom:max(1.4rem,env(safe-area-inset-bottom));text-align:center;
+  color:rgba(246,230,212,.72);font-size:.9rem;letter-spacing:.04em;cursor:pointer;animation:hint-pulse 2s ease-in-out infinite alternate}
+@keyframes hint-pulse{to{opacity:.58}}
+.intro.is-leaving{opacity:0;visibility:hidden;transform:scale(1.025);pointer-events:none}
+body.intro-active{overflow:hidden}
+body.intro-active header,body.intro-active main,body.intro-active footer{opacity:0;visibility:hidden;transform:translateY(14px);pointer-events:none}
+header,main,footer{transition:opacity .9s ease,transform .9s ease,visibility 0s linear}
+body.intro-active .hero h1,body.intro-active .hero h2,body.intro-active .hero p,body.intro-active .hero .cta{animation-play-state:paused}
+
+/* ---------- ГИРЛЯНДА ---------- */
+.garland{position:absolute;top:0;left:0;width:100%;height:90px;z-index:5;pointer-events:none}
+.garland svg{position:absolute;inset:0;width:100%;height:100%}
+.garland path{fill:none;stroke:#3b2420;stroke-width:2}
+.b{position:absolute;width:14px;height:20px;margin-left:-7px;opacity:.12;animation:on .7s ease forwards}
+.b::before{content:"";position:absolute;left:3px;top:-5px;width:8px;height:6px;background:#3b2420;border-radius:2px}
+.b i{position:absolute;inset:0;border-radius:50% 50% 55% 55%;background:radial-gradient(circle at 40% 35%,#fff3d0,var(--bulb) 55%,#d9822b);
+  box-shadow:0 0 14px 4px rgba(255,170,70,.65),0 0 46px 14px rgba(255,140,40,.28);animation:tw 3.4s ease-in-out infinite}
+@keyframes on{to{opacity:1}}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.72}}
+
+/* ---------- HEADER ---------- */
+header{position:relative;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:1rem;max-width:1300px;margin:0 auto;
+  padding:5rem clamp(1rem,5vw,4rem) 0}
+.lang{display:flex;gap:.3rem;font-size:.95rem}
+.lang button{background:none;border:1px solid rgba(231,181,154,.4);color:var(--paper);font:inherit;padding:.25rem .8rem;
+  border-radius:999px;cursor:pointer;transition:background .3s}
+.lang button[aria-pressed=true]{background:var(--bulb);color:var(--night);border-color:var(--bulb)}
+.tel{font-family:var(--serif);color:var(--bulb);text-decoration:none;border-bottom:1px solid var(--bulb)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:1rem clamp(1rem,5vw,4rem) 4rem;
+  min-height:calc(100vh - 10rem);min-height:calc(100svh - 10rem);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(4.6rem,22vw,16.5rem);line-height:.95;white-space:nowrap;max-width:100%;
+  color:var(--bulb);margin-left:-.02em;letter-spacing:-.045em;-webkit-text-stroke:1px rgba(255,230,177,.75);paint-order:stroke fill;
+  text-shadow:0 3px 0 #9d521b,0 0 50px rgba(255,150,50,.5),0 0 140px rgba(255,120,40,.3);
+  animation:warm 1.2s ease-out .1s both}
+.hero h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,3vw,2rem);color:var(--blush);
+  margin:1rem 0 .8rem;animation:fadeup 1s ease .2s both}
+.hero p{max-width:32ch;animation:fadeup 1s ease .35s both}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem;animation:fadeup 1s ease .5s both}
+@keyframes warm{0%{filter:blur(22px);opacity:0}100%{filter:blur(0);opacity:1}}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.4rem;text-decoration:none;font-weight:500;
+  border:1px solid var(--bulb);border-radius:999px;transition:background .3s,box-shadow .3s}
+.btn:hover{background:rgba(255,196,107,.14);box-shadow:0 0 28px rgba(255,170,70,.4)}
+.btn.main{background:var(--bulb);color:var(--night)}
+.btn.main:hover{background:#ffd896}
+.btn svg{width:1.15em;height:1.15em;fill:currentColor}
+
+/* ---------- ВЕЧЕР ---------- */
+.eve{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:4rem clamp(1rem,5vw,4rem) 6rem}
+.eve h3{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4.6vw,3.2rem);line-height:1.25;max-width:15ch;color:var(--paper)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3.5rem}
+.trio div{position:relative;padding-top:5.5rem}
+.trio div::before{content:"";position:absolute;left:0;top:0;width:84px;height:84px;border-radius:50%;
+  background:radial-gradient(circle,#fff0c4 0 6px,var(--bulb) 7px 11px,rgba(255,157,60,.35) 12px,transparent 68%)}
+.trio div:nth-child(2){margin-top:3rem}.trio div:nth-child(3){margin-top:1.5rem}
+.trio h4{font-family:var(--serif);font-size:1.4rem;color:var(--bulb);margin-bottom:.3rem}
+
+/* ---------- БРОНЬ ---------- */
+.book{position:relative;z-index:2;text-align:center;padding:5rem 1rem;
+  background:linear-gradient(180deg,transparent,rgba(120,30,50,.35),transparent)}
+.book h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,3vw,2rem);color:var(--blush)}
+.book .big{display:inline-block;margin-top:1rem;font-family:var(--serif);font-weight:900;font-size:clamp(2.2rem,9vw,6rem);
+  color:var(--bulb);text-decoration:none;text-shadow:0 0 40px rgba(255,150,50,.45);line-height:1.1}
+
+/* ---------- ТЕХ ---------- */
+.visit{position:relative;z-index:2;display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;max-width:1200px;margin:0 auto;padding:3rem clamp(1rem,5vw,4rem) 5rem;scroll-margin-top:2rem}
+.visit h3{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4.5vw,2.8rem);margin-bottom:1.6rem}
+.visit dl{display:grid;gap:1.2rem}
+.visit dt{color:var(--blush);font-size:.95rem}
+.visit dd{font-family:var(--serif);font-size:1.3rem}
+.visit dd a{text-decoration:none;border-bottom:1px solid var(--bulb)}
+.map{border-radius:160px 14px 14px 14px;overflow:hidden;min-height:380px;box-shadow:0 0 0 1px var(--bulb),0 0 60px rgba(255,150,50,.2)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:sepia(.75) saturate(.85) brightness(.78) contrast(1.05) hue-rotate(-10deg)}
+footer{position:relative;z-index:2;text-align:center;padding:1rem 1rem 3rem;font-family:var(--serif);color:var(--blush)}
+
+@media(max-width:800px){
+  .trio{grid-template-columns:1fr;gap:1.5rem}.trio div:nth-child(n){margin-top:0}
+  .visit{grid-template-columns:1fr;gap:2rem}
+  header{padding-top:4.5rem}
+  .hero{min-height:calc(100svh - 8rem);padding-top:1.5rem;padding-bottom:3rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important;transition:none!important}.b{opacity:1}.hero *,.hero h1{opacity:1}.embers,.intro{display:none}.intro h1{opacity:1}.cursor{display:none}
+}
+@media(pointer:coarse){.cursor{display:none}}
+</style>
+<noscript><style>
+  .intro{display:none!important}
+  body.intro-active{overflow-x:clip;overflow-y:auto}
+  body.intro-active header,body.intro-active main,body.intro-active footer{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+</style></noscript>
+</head>
+<body class="intro-active">
+<div class="cursor" id="cursor"></div>
+<div class="embers" id="embers" aria-hidden="true"></div>
+<div class="garland" id="garland" aria-hidden="true"></div>
+
+<section class="intro" id="intro" tabindex="0" aria-label="Միրա — ռեստորան" data-aria-hy="Միրա — ռեստորան" data-aria-ru="Мира — ресторан">
+  <div class="lang intro-lang" role="group" aria-label="Լեզու / Язык">
+    <button type="button" data-l="hy" aria-pressed="true">ՀԱՅ</button>
+    <button type="button" data-l="ru" aria-pressed="false">РУС</button>
+  </div>
+  <div class="intro-inner">
+    <p class="intro-kicker" data-hy="Միրա · Ռեստորան" data-ru="Мира · Ресторан">Միրա · Ռեստորան</p>
+    <h1 data-hy="Միրա" data-ru="Мира">Միրա</h1>
+    <span class="intro-rule" aria-hidden="true"></span>
+    <p data-hy="Տաք լույս, հանգիստ երեկո, լավ սեղան։" data-ru="Тёплый свет, неспешный вечер, хороший стол.">Տաք լույս, հանգիստ երեկո, լավ սեղան։</p>
+  </div>
+  <p class="intro-skip-hint" data-hy="Սեղմեք ցանկացած տեղ՝ բաց թողնելու համար" data-ru="Нажмите в любом месте, чтобы пропустить">Սեղմեք ցանկացած տեղ՝ բաց թողնելու համար</p>
+</section>
+
+<header>
+  <div class="lang" role="group" aria-label="Լեզու / Язык">
+    <button type="button" data-l="hy" aria-pressed="true">ՀԱՅ</button>
+    <button type="button" data-l="ru" aria-pressed="false">РУС</button>
+  </div>
+  <a class="tel" href="tel:+374443311">+374 44 33 11</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 data-hy="Միրա" data-ru="Мира">Միրա</h1>
+    <h2 data-hy="Ռեստորան" data-ru="Ресторан">Ռեստորան</h2>
+    <p data-hy="Տաք լույս, հանգիստ երեկո, լավ սեղան։" data-ru="Тёплый свет, неспешный вечер, хороший стол.">Տաք լույս, հանգիստ երեկո, լավ սեղան։</p>
+    <div class="cta">
+      <a class="btn main" href="tel:+374443311">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+        <span data-hy="Զանգահարել" data-ru="Позвонить">Զանգահարել</span>
+      </a>
+      <a class="btn" href="https://www.instagram.com/mira.restaurant_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.2-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="eve">
+    <h3 data-hy="Երեկոն սկսվում է այստեղ" data-ru="Вечер начинается здесь">Երեկոն սկսվում է այստեղ</h3>
+    <div class="trio">
+      <div><h4 data-hy="Տաք լույս" data-ru="Тёплый свет">Տաք լույս</h4><p data-hy="Կիսամութ և հարմարավետություն առաջին րոպեից։" data-ru="Полумрак и уют с первых минут.">Կիսամութ և հարմարավետություն առաջին րոպեից։</p></div>
+      <div><h4 data-hy="Անշտապ երեկո" data-ru="Неспешный вечер">Անշտապ երեկո</h4><p data-hy="Այստեղ ոչ ոք չի շտապում։" data-ru="Здесь никто не торопится.">Այստեղ ոչ ոք չի շտապում։</p></div>
+      <div><h4 data-hy="Լավ սեղան" data-ru="Хороший стол">Լավ սեղան</h4><p data-hy="Եկեք ընկերների կամ ընտանիքի հետ։" data-ru="Приходите с друзьями или семьёй.">Եկեք ընկերների կամ ընտանիքի հետ։</p></div>
+    </div>
+  </section>
+
+  <section class="book">
+    <h3 data-hy="Ամրագրում և կապ" data-ru="Бронирование и контакты">Ամրագրում և կապ</h3>
+    <a class="big" href="tel:+374443311">+374 44 33 11</a>
+  </section>
+
+  <section class="visit" id="visit">
+    <div>
+      <h3 data-hy="Ինչպես գտնել մեզ" data-ru="Как нас найти">Ինչպես գտնել մեզ</h3>
+      <dl>
+        <div><dt data-hy="Հեռախոս" data-ru="Телефон">Հեռախոս</dt><dd><a href="tel:+374443311">+374 44 33 11</a></dd></div>
+        <div><dt data-hy="Աշխատանքային ժամեր" data-ru="Часы работы">Աշխատանքային ժամեր</dt><dd data-hy="Ամեն օր, 12:00–00:00" data-ru="Ежедневно, 12:00–00:00">Ամեն օր, 12:00–00:00</dd></div>
+        <div><dt data-hy="Երթուղի" data-ru="Маршрут">Երթուղի</dt><dd><a data-hy="Բացել Google Maps-ում" data-ru="Открыть в Google Maps" href="https://www.google.com/maps/dir/?api=1&destination=40.1805796,44.5154147" target="_blank" rel="noopener">Բացել Google Maps-ում</a></dd></div>
+      </dl>
+    </div>
+    <div class="map">
+      <iframe title="Քարտեզ" data-title-hy="Քարտեզ" data-title-ru="Карта" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=40.1805796,44.5154147&z=16&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer data-hy="Միրա · Ռեստորան" data-ru="Мира · Ресторан">Միրա · Ռեստորան</footer>
+
+<script>
+(function(){
+  var intro=document.getElementById('intro'),introTimer;
+  function dismissIntro(){
+    if(!document.body.classList.contains('intro-active'))return;
+    clearTimeout(introTimer);
+    intro.setAttribute('aria-hidden','true');
+    intro.inert=true;
+    intro.classList.add('is-leaving');
+    document.body.classList.remove('intro-active');
+    setTimeout(function(){intro.remove()},950);
+  }
+  intro.addEventListener('click',function(ev){if(ev.target.closest('.intro-lang'))return;dismissIntro()});
+  intro.addEventListener('keydown',function(ev){
+    if(ev.target.closest('.intro-lang'))return;
+    if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();dismissIntro()}
+  });
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)dismissIntro();
+  else introTimer=setTimeout(dismissIntro,3500);
+
+  var NS='http://www.w3.org/2000/svg',gl=document.getElementById('garland');
+  function garland(){
+    var W=document.documentElement.clientWidth,n=Math.max(8,Math.round(W/78)),S=Math.max(2,Math.round(W/330)),
+        y=function(x){return 12+30*Math.sin(Math.PI*((x/W*S)%1))},d='M0 '+y(0).toFixed(1);
+    gl.innerHTML='';
+    for(var x=6;x<=W;x+=6)d+=' L'+x+' '+y(x).toFixed(1);
+    var s=document.createElementNS(NS,'svg'),p=document.createElementNS(NS,'path');
+    p.setAttribute('d',d);s.appendChild(p);gl.appendChild(s);
+    for(var i=0;i<=n;i++){
+      var bx=10+i/n*(W-20),b=document.createElement('div'),k=document.createElement('i');
+      b.className='b';b.style.left=bx+'px';b.style.top=(y(bx)+1)+'px';
+      b.style.animationDelay=(0.2+i*0.11)+'s';k.style.animationDelay=(Math.random()*3)+'s';
+      b.appendChild(k);gl.appendChild(b);
+    }
+  }
+  garland();var resizeTimer;addEventListener('resize',function(){clearTimeout(resizeTimer);resizeTimer=setTimeout(garland,120)});
+
+  var em=document.getElementById('embers');
+  for(var j=0;j<18;j++){var e=document.createElement('span'),z=2+Math.random()*3;
+    e.style.cssText='left:'+Math.random()*100+'%;width:'+z+'px;height:'+z+'px;animation-duration:'+(9+Math.random()*10)+'s;animation-delay:'+(Math.random()*12)+'s;--dx:'+(Math.random()*120-60)+'px';
+    em.appendChild(e)}
+
+  var c=document.getElementById('cursor');
+  if(window.matchMedia('(pointer:fine)').matches)addEventListener('pointermove',function(ev){c.style.setProperty('--x',ev.clientX+'px');c.style.setProperty('--y',ev.clientY+'px')});
+
+  var els=document.querySelectorAll('[data-hy]'),titles=document.querySelectorAll('[data-title-hy]'),ariaLabels=document.querySelectorAll('[data-aria-hy]'),description=document.querySelector('meta[name="description"]'),btns=document.querySelectorAll('.lang button');
+  function setLang(l){
+    document.documentElement.lang=l;
+    els.forEach(function(el){el.textContent=el.getAttribute('data-'+l)});
+    titles.forEach(function(el){el.setAttribute('title',el.getAttribute('data-title-'+l))});
+    ariaLabels.forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-aria-'+l))});
+    description.setAttribute('content',description.getAttribute('data-desc-'+l));
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+    document.title=l==='hy'?'Միրա — ռեստորան':'Мира — ресторан';
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+})();
+</script>
+</body>
+</html>
